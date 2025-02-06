@@ -61,10 +61,12 @@ async function getTracks(searchterm, res) {
    
 
 
-//route for love in tracks, artists and albums
-app.get('/searchLove', function (req, res) {
-    getTracks('king von', res);
-});  
+//route for searching in tracks, artists and albums
+app.get('/search', function (req, res) {
+    var searchterm = req.query.searchterm;
+    getTracks(searchterm, res);
+});
+   
 
 
 
