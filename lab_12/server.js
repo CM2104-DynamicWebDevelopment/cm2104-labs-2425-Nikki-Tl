@@ -21,7 +21,7 @@ spotifyApi.clientCredentialsGrant().then(
         console.log('The access token is ' + data.body['access_token']);
 
         // Save the access token so that it's used in future calls
-        spotifyApi.setAccessToken('193db95c4caa4994b41e71069564db8c-Db9AOOXk'); 
+        spotifyApi.setAccessToken(data.body['access_token']); 
     },
     function (err) {
         console.log(
