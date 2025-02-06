@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var SpotifyWebApi = require('spotify-web-api-node');
+var searchterm = "love";
 
 app.use(express.static('public'))
 
