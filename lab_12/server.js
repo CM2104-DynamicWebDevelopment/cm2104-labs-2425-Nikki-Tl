@@ -21,7 +21,7 @@ spotifyApi.clientCredentialsGrant().then(
         console.log('The access token is ' + data.body['access_token']);
 
         // Save the access token so that it's used in future calls
-        spotifyApi.setAccessToken('BQBl8MAmcxdVuZqTFMUxoxJYyN9Gtpiiz0Th1qYOY30EdfNryEtAvsXyljcag94LHfUESipOJqQCx0Bgo9lzddcKLpzQf4CFs6jZx9lQV4anQeDw02Zojq7oPvhCkolaoH-Db9AOOXk'); 
+        spotifyApi.setAccessToken('193db95c4caa4994b41e71069564db8c-Db9AOOXk'); 
     },
     function (err) {
         console.log(
