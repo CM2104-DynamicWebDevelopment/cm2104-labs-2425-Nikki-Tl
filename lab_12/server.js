@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var SpotifyWebApi = require('spotify-web-api-node');
-var searchterm = "love";
 
 app.use(express.static('public'))
 
@@ -46,4 +45,8 @@ async function getTracks(searchterm, res) {
 app.get('/searchLove', function (req, res) {
     getTracks('love', res);
 });  
+
+
+
+app.listen(8080);
    
