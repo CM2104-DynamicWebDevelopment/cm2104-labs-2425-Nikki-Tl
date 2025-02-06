@@ -1,10 +1,12 @@
 var express = require('express');
 var app = express();
+var SpotifyWebApi = require('spotify-web-api-node');
 
 app.use(express.static('public'))
 
-app.get('/', function(req, res){
-    res.send("Hello world! by express");
-});
+var spotifyApi = new SpotifyWebApi({
 
-app.listen(8080);
+    clientId: '5916dd2a78744634b08e5313b7c66f73',
+    clientSecret: '193db95c4caa4994b41e71069564db8c'
+
+});
