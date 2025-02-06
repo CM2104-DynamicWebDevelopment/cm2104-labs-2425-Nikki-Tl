@@ -39,3 +39,10 @@ async function getTracks(searchterm, res) {
     }); 
 }
    
+
+
+//route for love in tracks, artists and albums
+app.get('/searchLove', function (req, res) {
+    getTracks('love', res);
+});  
+   
