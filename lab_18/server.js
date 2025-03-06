@@ -145,7 +145,7 @@ app.post('/dologin', function(req, res) {
 
 
     if(result.login.password == pword){ req.session.loggedin = true; 
-      req.session.loggedinuser = uname;
+      req.session.loggedinuser = "uname";
       res.redirect('/') }
 
 
