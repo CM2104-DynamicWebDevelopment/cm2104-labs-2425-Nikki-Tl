@@ -17,7 +17,6 @@ const session = require('express-session'); //npm install express-session
 const bodyParser = require('body-parser'); //npm install body-parser
 
 const app = express();
-loggedinuser = "";
 
 //this tells express we are using sesssions. These are variables that only belong to one user of the site at a time.
 app.use(session({ secret: 'example' }));
@@ -60,6 +59,7 @@ app.get('/', function(req, res) {
   
 
   var loggedinuserResult = "";
+  console.log("Something pase: "+ loggedinuser);
   //otherwise perfrom a search to return all the documents in the people collection
   db.collection('people').findOne({"login.username": loggedinuser}),function(err, result){
     if (err) throw err;
@@ -145,7 +145,7 @@ app.post('/dologin', function(req, res) {
 
 
     if(result.login.password == pword){ req.session.loggedin = true; 
-      req.session.loggedinuser = "uname";
+      req.session.loggedinuser = uname;
       res.redirect('/') }
 
 
