@@ -61,10 +61,10 @@ app.get('/', function(req, res) {
 
 
   //otherwise perfrom a search to return all the documents in the people collection
-  db.collection('people').findOne({"login.username": loggedinuser}),function(err, reeee){
+  db.collection('people').findOne({"login.username": req.session.loggedinuser}),function(err, result){
     if (err) throw err;
     //the result of the query is sent to the users page as the "users" array
-    loggedinuserResult = reeee;
+    loggedinuserResult = result;
     db.collection('people').find().toArray(function(err, result) {
       if (err) throw err;
       //the result of the query is sent to the users page as the "users" array
