@@ -57,12 +57,24 @@ app.get('/', function(req, res) {
   //if the user is not logged in redirect them to the login page
   if(!req.session.loggedin){res.redirect('/login');return;}
 
+
+  var uname = req.query.username;
+
   //otherwise perfrom a search to return all the documents in the people collection
   db.collection('people').find().toArray(function(err, result) {
     if (err) throw err;
     //the result of the query is sent to the users page as the "users" array
     res.render('pages/users', {
       users: result
+    })
+  });
+
+  
+  db.collection('people').findOne({"login.username": uname}, function(err, result) {
+    if (err) throw err;
+   
+    res.render('pages/users', {
+      user: result
     })
   });
 
@@ -84,8 +96,6 @@ app.get('/profile', function(req, res) {
   db.collection('people').findOne({"login.username": uname}, function(err, result) {
     if (err) throw err;
    
-
-
     res.render('pages/profile', {
       user: result
     })
