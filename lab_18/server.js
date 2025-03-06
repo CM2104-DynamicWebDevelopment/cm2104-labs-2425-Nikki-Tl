@@ -59,7 +59,7 @@ app.get('/', function(req, res) {
 
   
 
-  var loggedinuserResult = "";
+  var loggedinuserResult = "result error";
   console.log("Something RAHHHHHH: "+ req.session.loggedinuser);
   //otherwise perfrom a search to return all the documents in the people collection
   db.collection('people').findOne({"user.login.username": req.session.loggedinuser}),function(err, result){
