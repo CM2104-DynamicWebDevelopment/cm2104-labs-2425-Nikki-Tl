@@ -61,7 +61,7 @@ app.get('/', function(req, res) {
 
   var loggedinuserResult = "result error";
   var loggedinuser = req.session.loggedinuser;
-  console.log("Something RAHHHHHH: "+ req.session.loggedinuser);
+  console.log("Something RAHHHHHH: "+ loggedinuser);
   //otherwise perfrom a search to return all the documents in the people collection
   db.collection('people').findOne({"login.username": loggedinuser}),function(err, result){
     if (err) throw err;
@@ -147,9 +147,11 @@ app.post('/dologin', function(req, res) {
 
 
     if(result.login.password == pword){ req.session.loggedin = true; 
-      req.session.loggedinuser = uname
+      req.session.loggedinuser = uname;
       res.redirect('/') }
 
+
+      
 
 
     else{res.redirect('/login')}
