@@ -17,7 +17,7 @@ const session = require('express-session'); //npm install express-session
 const bodyParser = require('body-parser'); //npm install body-parser
 
 const app = express();
-uname = ""
+loggedinuser = "";
 
 //this tells express we are using sesssions. These are variables that only belong to one user of the site at a time.
 app.use(session({ secret: 'example' }));
@@ -57,22 +57,23 @@ app.get('/', function(req, res) {
   //if the user is not logged in redirect them to the login page
   if(!req.session.loggedin){res.redirect('/login');return;}
 
-  db.collection('people').findOne({"login.username": uname}),function(err, result){
-    if (err) throw err;
-    //the result of the query is sent to the users page as the "users" array
-    res.render('pages/users', {
-      uname: result
-    })
-  };
+  
 
 
   //otherwise perfrom a search to return all the documents in the people collection
   db.collection('people').find().toArray(function(err, result) {
     if (err) throw err;
     //the result of the query is sent to the users page as the "users" array
-    res.render('pages/users', {
-      users: result
-    })
+    users = result;
+    db.collection('people').findOne({"login.username": loggedinuser}),function(err, result){
+      if (err) throw err;
+      //the result of the query is sent to the users page as the "users" array
+      res.render('pages/users', {
+        users: result,
+        loggedinuser: result
+      })
+    };
+    
   });
 
 });
