@@ -65,7 +65,7 @@ app.get('/', function(req, res) {
     if (err) throw err;
     //the result of the query is sent to the users page as the "users" array
     loggedinuserResult = result;
-    console.log(result);
+    console.log("Something pase: "+result);
     
   };
 
