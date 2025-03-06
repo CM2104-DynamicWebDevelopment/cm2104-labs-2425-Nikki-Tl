@@ -60,7 +60,7 @@ app.get('/', function(req, res) {
   
 
   var loggedinuserResult = "";
-  console.log("Something pase: "+ loggedinuser);
+  console.log("Something pase: "+ req.session.loggedinuser);
   //otherwise perfrom a search to return all the documents in the people collection
   db.collection('people').findOne({"login.username": loggedinuser}),function(err, result){
     if (err) throw err;
